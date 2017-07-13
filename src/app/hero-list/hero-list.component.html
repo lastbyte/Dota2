@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="row">
+        <div *ngFor="let hero of heroes" class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" [attr.src]="hero.url_large_portrait">
+            </div>
+            <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">{{ hero.localized_name}}</span>
+            </div>
+        </div>
+    </div>
+</div>
