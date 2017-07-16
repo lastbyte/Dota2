@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Hero } from '../classes/hero';
-import { HeroesService } from '../services/heroes.service';
+import { Hero } from '../../classes/hero';
+import { HeroesService } from '../../services/heroes.service';
 
 @Component({
   selector: 'app-hero-list',
@@ -10,15 +10,29 @@ import { HeroesService } from '../services/heroes.service';
 export class HeroListComponent implements OnInit {
   heroes: Hero[] = [];
   errMsg = '';
+  hoveredHero: Hero = null;
+  visible: String = 'invisible'
   constructor(private heroService: HeroesService) { }
 
   ngOnInit() {
     this.heroService
     .getHeroList()
     .subscribe(
-      h => this.heroes = h,
-      e => this.errMsg = e
+      data => { this.heroes = data
+        console.log(this.heroes)
+    }
     );
+  }
+
+  showname(hero: Hero , $event) {
+    this.hoveredHero = hero;
+    this.visible = $event.type === 'mouseover' ? 'visible' : '';
+
+  }
+
+  hidename($event) {
+    this.hoveredHero = null;
+    this.visible = $event.type === 'mouseout' ? 'invisible' : '';
   }
 
 }

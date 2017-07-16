@@ -1,12 +1,53 @@
-<div class="container  heroc">
-    <div class="row">
-        <div *ngFor="let hero of heroes" class="card">
-            <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" [attr.src]="hero.url_large_portrait">
+<div class="container  hero-container">
+    <div class="row" appMatchHeight="heightMatcher">
+        <div class="col l8 s12 heightMatcher">
+            <div class="row">
+                <div class="col l1">
+                </div>
+                <div class="col l11">
+                    <a *ngFor="let hero of heroes | attributeFilter : 'DOTA_ATTRIBUTE_STRENGTH'" (mouseover)="showname(hero,$event)" [routerLink]="['/hero', hero.displayname ]">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator hero-select-icon" src="../../../assets/images/portraits/{{hero.name}}.png">
+                        </div>
+                    </a>
+                </div>
             </div>
-            <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">{{ hero.localized_name}}</span>
+            <div class="row">
+                <div class="col l1">
+                </div>
+                <div class="col l11">
+                    <a *ngFor="let hero of heroes | attributeFilter : 'DOTA_ATTRIBUTE_AGILITY'" (mouseover)="showname(hero,$event)" [routerLink]="['/hero', hero.displayname ]">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator hero-select-icon" src="../../../assets/images/portraits/{{hero.name}}.png">
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col l1">
+                </div>
+                <div class="col l11">
+                    <a *ngFor="let hero of heroes | attributeFilter : 'DOTA_ATTRIBUTE_INTELLECT'" (mouseover)="showname(hero,$event)" [routerLink]="['/hero', hero.displayname ]">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator hero-select-icon" src="../../../assets/images/portraits/{{hero.name}}.png">
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col l4 heroDetailWrapper heightMatcher" *ngIf="hoveredHero">
+            <div class="card heroDetail">
+                <div class="top-bar"></div>
+                <header>
+                    <h2>{{ hoveredHero.displayname}}</h2>
+                </header>
+                <img src="../../../assets/images/heroes/{{hoveredHero.name}}_full.png" />
+                <img src="../../../assets/images/{{hoveredHero.attributeprimary}}.png" class="circle attribute" />
+                <div class="stats">
+                </div>
             </div>
         </div>
     </div>
+
+
 </div>

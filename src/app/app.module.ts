@@ -10,17 +10,21 @@ import { routes } from './app.router';
 import { MaterializeModule } from 'angular2-materialize';
 
 
-//own services
+// own services
 
 import { HeroesService } from './services/heroes.service';
 
 // for components
 import { AppComponent } from './app.component';
-import { HeroListComponent } from './hero-list/hero-list.component';
-import { HeroDetailComponent } from './hero-detail/hero-detail.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { HomeComponent } from './home/home.component';
+import { HeroListComponent } from './components/hero-list/hero-list.component';
+import { HeroDetailComponent } from './components/hero-detail/hero-detail.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { HomeComponent } from './components/home/home.component';
+import { ItemListComponent } from './components/item-list/item-list.component';
+import { HeroAttributeComponent } from './components/hero-attribute/hero-attribute.component';
+import { AttributeFilterPipe } from './pipes/attribute-filter.pipe';
+import { MatchHeightDirective } from './directives/match-height.directive';
 
 
 
@@ -32,6 +36,10 @@ import { HomeComponent } from './home/home.component';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
+    ItemListComponent,
+    HeroAttributeComponent,
+    AttributeFilterPipe,
+    MatchHeightDirective,
   ],
   imports: [
     BrowserModule,

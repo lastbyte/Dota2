@@ -11,16 +11,16 @@ export class HeroesService {
 
   constructor(private http: Http) { }
 
-  getHeroList(): Observable<Hero[]>{
-    return this.http.get('../../assets/dota2\ data/heroes.json',)
-    .map((res: Response) => res.json())
+  getHeroList(): Observable<Hero[]> {
+    return this.http.get('../../assets/dota2\ data/herodata.json')
+    .map((response: Response) => response.json())
     .catch(this.handleError);
   }
 
-  private handleError(error: any){
+  private handleError(error: any) {
 
-    let errMsg = (error.message) ? error.message:
-    error.status ? `${error.status}  - ${error.statustext}` : 'Server error';
+    // tslint:disable-next-line:max-line-length
+    const errMsg = (error.message) ? error.message : error.status ? `${error.status}  - ${error.statustext} ${ 'this is a error' }` : 'Server error';
     console.error(errMsg);
     return Observable.throw(errMsg);
   }
